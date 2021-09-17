@@ -11,3 +11,4 @@ SPLITTER
 - Used react color log npm package to give console a colorful envionment
 - Select the amounnt of people being payed for
 - 😁Use console while clicking to see actions happening
+- Prevented bug of negative values being entered in the price and people input

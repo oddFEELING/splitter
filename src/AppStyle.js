@@ -4,7 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 //-->  Declare font used
 const font_1 = 'sans-serif';
-const font_2 = 'Inconsolata';
+const font_2 = 'source code pro';
 
 //-->  Declare colors
 const pmColor = '#00494D';
@@ -37,6 +37,7 @@ export const HeaderTxt = styled.h2`
   font-weight: 700;
   color: ${pmColor};
   margin-bottom: ${(props) => props.mgB};
+  margin-top: ${(props) => props.mgT};
 `;
 
 //-->   Content card
@@ -77,6 +78,11 @@ export const InputDiv = styled.div`
     'tip_select'
     'tip_select'
     'people_number_input';
+
+  /* for tablets and laptops */
+  @media screen and (min-width: 650px) {
+    padding: 10px 1%;
+  }
 `;
 
 //-->  Div to hold the input components
@@ -84,7 +90,8 @@ export const BillInp = styled.div`
   grid-area: ${(props) => props.area};
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: ${(props) => props.mgB};
+  margin-top: ${(props) => props.mgT};
   background-color: ${(props) => props.bgColor};
 
   p {
@@ -103,14 +110,14 @@ export const BillInp = styled.div`
   }
 `;
 
-//-->   th inputs used
+//-->   the inputs used
 export const Inputs = styled.input`
   width: 100%;
   height: 100%;
   border: none;
   text-align: right;
-  font-family: ${font_2};
   font-size: 25px;
+  font-family: ${font_2};
   background-color: ${inpColor};
   padding: 5px 5%;
 
@@ -119,48 +126,62 @@ export const Inputs = styled.input`
   }
 `;
 
+//-->  div to hold the whole percent buttons and label
+export const PercentDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-family: ${font_2};
+    letter-spacing: 3px;
+    font-weight: 500;
+    line-height: 0px;
+    margin-left: 5%;
+  }
+`;
+
 //-->  Tip selection div
 export const TipDiv = styled.div`
-  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   grid-area: tip_select;
+  margin-bottom: 30px;
   /* background-color: tan; */
 `;
 
 //-->  create buttons for tip percent
 export const TipBtn = styled.button`
-  width: 30%;
-  height: 70px;
+  width: 31%;
+  height: 65%;
   color: #fff;
   font-family: ${font_1};
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 700;
   border: none;
-  margin: 3px;
+  margin: 5px;
   cursor: pointer;
   transition: 300ms all ease-in-out;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: ${pmColor};
 
   &:hover {
     color: ${pmColor};
     background-color: ${sdcolor_2};
   }
-`;
 
-//-->  Div to old the output elements
-export const OutputDiv = styled.div`
-  width: 90%;
-  height: 100%;
-  padding: 10px 5%;
-  background-color: ${pmColor};
-
+  /* for bigger screens */
   @media screen and (min-width: 650px) {
-    border-radius: 25px;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+    width: 25%;
+  }
+
+  /* for even bigger screens */
+  @media screen and (min-width: 1050px) {
+    width: 30%;
   }
 `;
 
@@ -178,4 +199,71 @@ export const Person = styled(PersonIcon)`
   color: ${icColor};
   position: absolute;
   top: 10px;
+`;
+
+//-->  Div to old the output elements
+export const OutputDiv = styled.div`
+  width: 85%;
+  height: 450px;
+  display: flex;
+  position: relative;
+  padding: 10px 2%;
+  border-radius: 22px;
+  flex-direction: column;
+  background-color: ${pmColor};
+
+  @media screen and (min-width: 650px) {
+    height: 100%;
+    border-radius: 22px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+  }
+`;
+
+//-->  containers for the output div
+export const OutCont = styled.div`
+  width: 96%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+  /* background-color: red; */
+  font-family: ${font_2};
+  align-items: center;
+`;
+
+//-->  output text display
+export const TextDisp = styled.p`
+  font-size: ${(props) => (props.side === 'right' ? '30px' : '17px')};
+  line-height: 0px;
+  color: ${(props) => (props.side === 'right' ? sdcolor_2 : '#fff')};
+  font-weight: ${(props) => (props.side === 'right' ? 800 : 400)};
+  letter-spacing: ${(props) => (props.side === 'right' ? 0 : '3px')};
+`;
+
+//-->  create the reset button
+export const ResetBtn = styled.button`
+  width: 85%;
+  height: 13%;
+  align-self: center;
+  position: absolute;
+  bottom: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: ${font_1};
+  color: ${pmColor};
+  border-radius: 5px;
+  background-color: ${sdcolor_2};
+  transition: 300ms all ease-in-out;
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: ${sdColor};
+    color: ${pmColor};
+  }
+
+  /* fortablets and laptops */
+  @media screen and (min-width: 820px) {
+    height: 10%;
+  }
 `;
