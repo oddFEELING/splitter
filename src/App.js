@@ -37,7 +37,7 @@ function App() {
   }, [Bill]);
 
   useEffect(() => {
-    _info('Tip Amount changed');
+    _success('Tip Amount changed');
   }, [TipAmt]);
 
   useEffect(() => {
